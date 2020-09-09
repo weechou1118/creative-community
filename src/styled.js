@@ -45,3 +45,20 @@ export const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
 `
+
+export const IconFont = createGlobalStyle`
+  @font-face {
+    font-family: 'iconfont';  /* project id 2056025 */
+    src: url('//at.alicdn.com/t/font_2056025_rw981p885gi.eot');
+    src: url('//at.alicdn.com/t/font_2056025_rw981p885gi.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2056025_rw981p885gi.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2056025_rw981p885gi.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2056025_rw981p885gi.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2056025_rw981p885gi.svg#iconfont') format('svg');
+  }
+  .iconfont {
+    font-family: 'iconfont' !important;
+    font-size: normal;
+    font-size: 16px;
+  }
+`

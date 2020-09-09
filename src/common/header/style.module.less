@@ -1,0 +1,119 @@
+@thisOrange: #ec7259;
+
+.headerWrapper {
+  position: relative;
+  min-width: 1200px;
+  max-width: 1440px;
+  height: 56px;
+  border-bottom: 1px solid #f0f0f0;
+
+  // logo
+  .headerLogo {
+    display: flex;
+    margin: 0 30px;
+    height: 57px;
+    align-items: center;
+    float: left;
+
+    img {
+      width: 60px;
+    }
+  }
+}
+
+.headerWrapper {
+  .navWrapper {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  // nav
+  .headerNav {
+    height: 56px;
+    display: flex;
+    align-items: center;
+
+    a {
+      font-size: 17px;
+      color: #000;
+      text-decoration: none;
+      padding: 0 20px;
+    }
+
+    &.left {
+      &.active {
+        color: #ea6f5a;
+      }
+    }
+
+    &.right {
+      float: right;
+      color: #969696;
+      margin-right: 20px;
+      
+      .writeButton, .registerButton {
+        display: inline-block;
+        height: 40px;
+        border-radius: 20px;
+        line-height: 40px;
+        background-color: @thisOrange;
+        color: #fff;
+        font-size: 16px;
+        padding: 0 24px;
+      }
+
+      .registerButton {
+        box-sizing: border-box;
+        background-color: #fff;
+        border: 1px solid @thisOrange;
+        color: @thisOrange;
+        margin: 0 10px;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+
+  }
+}
+
+.headerWrapper {
+  .searchWrapper {
+    display: inline-block;
+
+    .search {
+      display: flex;
+      align-items: center;
+      height: 56px;
+      position: relative;
+
+      input {
+        background-color: #f2f2f2;
+        outline: none;
+        border: 0;
+        height: 36px;
+        border-radius: 18px;
+        box-sizing: border-box;
+        padding-left: 14px;
+        margin-left: 20px;
+      }
+
+      span {
+        position: absolute;
+        right: 16px;
+      }
+      span::before {
+        content: '';
+        position: absolute;
+        background-color: transparent;
+        width: 30px;
+        height: 34px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 0 50% 50% 0 ;
+        cursor: pointer;
+      }
+    }
+  }
+}
