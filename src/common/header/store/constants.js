@@ -1,0 +1,6 @@
+export const SEARCH_FOCUS = 'search_focus'
+export const SEARCH_BlUR = 'search_blur'
+export const GET_TAGS = 'get_tags'
+export const GET_TAGS_SUCCESS = 'get_tags_success'
+export const MOUSE_ENTER = 'change_mouse_in'
+export const MOUSE_LEAVE = 'change_mouse_leave'
