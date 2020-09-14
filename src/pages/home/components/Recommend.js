@@ -5,7 +5,7 @@ import { recommendWrapper, recommendItem, recommendPic } from '../style.module.l
 class Recommend extends Component {
   render() { 
     const recommendList = this.props.recommendList.toJS()
-    return (  
+    return (
       <div className={recommendWrapper}>
       {
         recommendList.map(item => {

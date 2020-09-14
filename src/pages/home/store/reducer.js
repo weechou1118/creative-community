@@ -1,10 +1,11 @@
 import { v4 as uuid } from 'uuid'
+import { GET_HOME_LIST_SUCCESS } from './contants'
 import {
   fromJS
 } from 'immutable'
 
 const defaultState = fromJS({
-  topicList: [
+  "topicList": [
     { id: uuid(), title: '社会热点', imgUrl: '//upload.jianshu.io/collections/images/261938/man-hands-reading-boy-large.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64' },
     { id: uuid(), title: '手绘', imgUrl: '//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64' }
   ],
@@ -70,7 +71,11 @@ const defaultState = fromJS({
 })
 
 export default (state = defaultState, action) => {
+  console.log(action.type)
   switch (action.type) {
+    case GET_HOME_LIST_SUCCESS:
+      console.log(action.payload)
+      return state
     default:
       return state
   }
