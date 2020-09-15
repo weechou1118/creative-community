@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 import { getHomeList } from './store/actionCreator'
+// import { SHOW_SCROLL, HIDE_SCROLL } from '../home/store/contants'
+import { BackTop } from 'antd'
+import { BackTopUI } from './components/BackTop'
 import Topic from './components/Topic'
 import List from './components/List'
 import Recommend from './components/Recommend'
 import Writer from './components/Writer'
 import Styles from './style.module.less'
+import 'antd/dist/antd.css';
 
-class Home extends Component {
-  componentDidMount() {
-    this.props.handleGetList()
-  }
+class Home extends PureComponent {
   render() {
     return (
       <div className={Styles.main}>
@@ -23,8 +24,25 @@ class Home extends Component {
           <Recommend />
           <Writer />
         </div>
+        <BackTop>
+          <BackTopUI/>
+        </BackTop>
+        {/* {
+          this.props.showScroll?
+          : null
+        } */}
       </div>
     );
+  }
+  componentDidMount() {
+    this.props.handleGetList()
+    this.bindScrollEvents()
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.props.handleShowBackTop)
+  }
+  bindScrollEvents() {
+    window.addEventListener('scroll', this.props.handleShowBackTop)
   }
 }
 
@@ -33,13 +51,22 @@ const mapState = state => ({
   articleList: state.getIn(['home', 'articleList']),
   recommendList: state.getIn(['home', 'recommendList']),
   writerList: state.getIn(['home', 'writerList']),
+  showScroll: state.getIn(['home', 'showScroll']),
 })
 
 const mapDispatch = dispatch => {
   return {
     handleGetList() {
       dispatch(getHomeList())
-    }
+    },
+    // handleShowBackTop() {
+    //   const scrollTop = document.documentElement.scrollTop
+    //   if (scrollTop >= 400) {
+    //     dispatch({type: SHOW_SCROLL})
+    //   } else {
+    //     dispatch({type: HIDE_SCROLL})
+    //   }
+    // }
   }
 }
 

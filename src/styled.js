@@ -62,3 +62,24 @@ export const IconFont = createGlobalStyle`
     font-size: 16px;
   }
 `
+
+export const ShowTransition = createGlobalStyle`
+  .show-enter {
+    opacity: 0.01;
+    transform: scale(0.9) translateY(50%);
+  }
+  .show-enter-active {
+      opacity: 1;
+      transform: scale(1) translateY(0%);
+      transition: all 300ms ease-out;
+  }
+  .show-exit {
+      opacity: 1;
+      transform: scale(1) translateY(0%);
+  }
+  .show-exit-active {
+      opacity: 0.01;
+      transform: scale(0.9) translateY(50%);
+      transition: all 300ms ease-out;
+  }
+`

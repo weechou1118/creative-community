@@ -1,2 +1,5 @@
 export const GET_HOME_LIST = 'get_home_list'
 export const GET_HOME_LIST_SUCCESS = 'get_home_list_success'
+export const GET_MORE_HOME_LIST = 'get_more_home_list'
+export const SHOW_SCROLL = 'show_scroll'
+export const HIDE_SCROLL = 'hide_scroll'

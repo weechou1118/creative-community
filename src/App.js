@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GlobalStyle, IconFont } from './styled'
+import { GlobalStyle, IconFont, ShowTransition } from './styled'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Header from './common/header'
@@ -12,6 +12,7 @@ class App extends Component {
     return (  
       <div>
         <GlobalStyle />
+        <ShowTransition />
         <IconFont />
         <Provider store={store}>
           <Header />

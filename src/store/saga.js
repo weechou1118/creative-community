@@ -27,7 +27,6 @@ function* getTags(action) {
   })
 }
 function* getHomeList(action) {
-  console.log(action)
   // fetch是ES6提供的原生方法
   const p = () => fetch('https://www.fastmock.site/mock/e577042399cc4adf49011be9506c21e7/api/topicList',{
     method: 'GET'
@@ -36,7 +35,6 @@ function* getHomeList(action) {
   .then(res=> res.json())
   .then(res=>{
     if (res.success) {
-      console.log(res.data)
       return res.data
     }else {
       console.log('网络请求失败')

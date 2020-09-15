@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid'
-import { GET_HOME_LIST_SUCCESS } from './contants'
+import { GET_HOME_LIST_SUCCESS, GET_MORE_HOME_LIST, SHOW_SCROLL, HIDE_SCROLL } from './contants'
 import {
   fromJS
 } from 'immutable'
@@ -67,15 +67,32 @@ const defaultState = fromJS({
     "id": uuid(),
     "imgUrl": "https://upload.jianshu.io/users/upload_avatars/301940/189d69dd-af7c-4290-9e2c-89e98acf3603.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
     "title": "卢璐说"
-  }]
+  }],
+  loading: false,
+  showScroll: false
 })
 
 export default (state = defaultState, action) => {
-  console.log(action.type)
   switch (action.type) {
     case GET_HOME_LIST_SUCCESS:
-      console.log(action.payload)
       return state
+    case 'sleeping':
+      return state.set('loading', true)
+    case SHOW_SCROLL:
+      return state.set('showScroll', true)
+    case HIDE_SCROLL:
+      return state.set('showScroll', false)
+    case GET_MORE_HOME_LIST:
+      const articleList = state.get('articleList').toJS()
+      const sliceList = JSON.parse(JSON.stringify(articleList.slice(0,2)))
+      sliceList.forEach(item => {
+        item.id = uuid()
+      })
+      const newArticleList = articleList.concat(sliceList)
+      return state.merge({
+        articleList: fromJS(newArticleList),
+        loading: false
+      })
     default:
       return state
   }

@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
+import { getMoreHomeList } from '../store/actionCreator'
 import { 
   listWrapper, 
   listItem,
   listPic,
   listInfo,
   title,
-  desc 
+  desc,
+  loadMore
 } 
 from '../style.module.less'
 
-class List extends Component {
+class List extends PureComponent {
   render() { 
     const articleList = this.props.articleList.toJS()
     return (  
@@ -28,13 +30,38 @@ class List extends Component {
             )
           })  
         }
+        {
+          !this.props.loading?
+          <a className={loadMore} href="/" onClick={this.props.handleLoadMore}>阅读更多</a>:
+          this.loadingUI()
+        }
       </div>
     );
+  }
+
+  loadingUI() {
+    return (
+      <div>加载中</div>
+    )
   }
 }
 
 const mapState = state => ({
-  articleList: state.getIn(['home', 'articleList'])
+  articleList: state.getIn(['home', 'articleList']),
+  loading: state.getIn(['home', 'loading'])
 })
 
-export default connect(mapState)(List);
+const mapDispatch = dipatch => ({
+  handleLoadMore(e) {
+    e.preventDefault()
+    // TODO 待优化
+    dipatch({
+      type: 'sleeping'
+    })
+    setTimeout(() => {
+      dipatch(getMoreHomeList())
+    }, 1000);
+  }
+})
+
+export default connect(mapState, mapDispatch)(List);

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 import { topicPic, topicWrapper, topicItem } from '../style.module.less'
 
-class Topic extends Component {
+class Topic extends PureComponent {
   render() { 
     const topicList = this.props.topicList.toJS()
     return (  
