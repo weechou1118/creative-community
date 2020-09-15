@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 import { getMoreHomeList } from '../store/actionCreator'
+import { Link } from 'react-router-dom'
 import { 
   listWrapper, 
   listItem,
@@ -20,13 +21,15 @@ class List extends PureComponent {
         {
           articleList.map(item => {
             return (
-              <div key={item.id} className={listItem}>
-                <img className={listPic} alt='' src={item.imgUrl} />
-                <div className={listInfo}>
-                  <h3 className={title}>{item.title}</h3>
-                  <p className={desc}>{item.desc}</p>
+              <Link to='/detail' key={item.id}>
+                <div className={listItem}>
+                  <img className={listPic} alt='' src={item.imgUrl} />
+                  <div className={listInfo}>
+                    <h3 className={title}>{item.title}</h3>
+                    <p className={desc}>{item.desc}</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             )
           })  
         }

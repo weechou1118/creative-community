@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
+import { Link } from 'react-router-dom'
 import Logo from '../../statics/logo.png'
 import Styles from './style.module.less'
 
@@ -12,9 +13,9 @@ class Header extends Component {
     const { focused, handleInputFocused, handleInputBlured } = this.props 
     return (
       <div className={Styles.headerWrapper}>
-        <a href='/' className={Styles.headerLogo}>
+        <Link to='/' className={Styles.headerLogo}>
           <img alt='logo' src={Logo} />
-        </a>
+        </Link>
         <nav className={`${Styles.headerNav} ${Styles.right}`}>
           <a href="/" className='iconfont'>&#xe636;</a>
           <a href="/">登录</a>

@@ -10,18 +10,16 @@ import {store} from './store'
 class App extends Component {
   render() { 
     return (  
-      <div>
-        <GlobalStyle />
-        <ShowTransition />
-        <IconFont />
         <Provider store={store}>
-          <Header />
+          <GlobalStyle />
+          <ShowTransition />
+          <IconFont />
           <BrowserRouter>
+            <Header />
             <Route exact path="/" component={Home}></Route>
             <Route exact path="/detail" component={Detail}></Route>
           </BrowserRouter>
         </Provider>
-      </div>
     );
   }
 }
