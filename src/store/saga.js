@@ -1,5 +1,6 @@
 import { GET_TAGS, GET_TAGS_SUCCESS } from '../common/header/store/constants'
 import { GET_HOME_LIST, GET_HOME_LIST_SUCCESS } from '../pages/home/store/contants'
+import { GET_DETAIL, GET_DETAIL_SUCCESS } from '../pages/detail/store/constants'
 import { getRandomArrayElements } from '../utils/tools'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
@@ -48,10 +49,36 @@ function* getHomeList(action) {
     payload: res
   })
 }
+function* getDetail(action) {
+  console.log(action.id)
+  const p = () => fetch('https://www.fastmock.site/mock/e577042399cc4adf49011be9506c21e7/api/detail/1', {
+    method: 'GET'
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.code === 200) {
+      return res.data
+    } else {
+      console.log('网络请求失败')
+    }
+  })
+  .catch(error => {
+    return error
+  })
+
+  const res = yield call(p)
+
+  yield put({
+    type: GET_DETAIL_SUCCESS,
+    payload: res
+    
+  })
+}
 
 function* rootSage() {
   yield takeEvery(GET_TAGS, getTags)
   yield takeEvery(GET_HOME_LIST, getHomeList)
+  yield takeEvery(GET_DETAIL, getDetail)
 }
 
 export default rootSage

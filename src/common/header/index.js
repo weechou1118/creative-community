@@ -88,7 +88,7 @@ const mapStateToProps = (state) => {
 
     // fromJS里的get
     focused: header.get('focused'),
-    list: header.get('list'),
+    list: header.get('list')||['asd'],
     loading: header.get('loading'),
     mouseIn: header.get('mouseIn')
   }
