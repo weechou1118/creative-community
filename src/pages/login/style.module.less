@@ -1,0 +1,37 @@
+.main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 56px;
+  min-width: 1200px;
+  background-color: #eee;
+
+  .loginWrapper {
+    width: 400px;
+    margin: 50px auto;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    padding: 50px;
+
+    .title {
+      text-align: center;
+      font-size: 18px;
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+        color: #969696;
+        padding: 10px;
+        font-weight: bold;
+
+        &.active {
+          color: #ea6f5a;
+          border-bottom: 2px solid #ea6f5a;
+        }
+      }
+    }
+  }
+}
